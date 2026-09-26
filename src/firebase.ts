@@ -1,17 +1,18 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyCedOqydfLQNrRrlmtL1-j19DuddoM86Qw",
-  authDomain: "project-dynamic-46eb3.firebaseapp.com",
-  projectId: "project-dynamic-46eb3",
-  storageBucket: "project-dynamic-46eb3.firebasestorage.app",
-  messagingSenderId: "709962779443",
-  appId: "1:709962779443:web:7d12345de14552ea298c46",
-  measurementId: "G-XDQBS2QDGX"
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || "TU_API_KEY",
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || "tu-proyecto.firebaseapp.com",
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || "tu-proyecto",
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || "tu-proyecto.appspot.com",
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || "123456789",
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || "1:123456:web:abcde"
 };
 
 const app = initializeApp(firebaseConfig);
-export const db = getFirestore(app);
+
 export const auth = getAuth(app);
+export const db = getFirestore(app);
+export default app;
